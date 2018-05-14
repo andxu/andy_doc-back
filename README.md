@@ -121,3 +121,11 @@ I have setup a spring boot application, set a breakpoint, now let me start the d
 2. We cannot easily implement evaluation and HCR, because the evaluation/hcr provider needs the project support to generate java bytecode instructions, so it cannot be moved to remote together with debug core, it requires us to extends vscode protocol for transport java bytecode instructions. 
 All reasons above will result in a huge change to our code, then why we cannot move the entire debug server to remote? That is because the debug server depends on JDT language server for project support, if we move all debug server to remote, we also need to setup the project remote the same as the local ones, which means your project in remote must have the exact same path as your local machine, and you cannot move/rename your local project, the jdk version and location must be same too and the third-party librairies.
 
+
+operation |jdwp requests | jdwp packet size | vscode requests| vscode packet size
+---- | --- | --- | --- | ---
+list threads|47|2687|1(2.13 %)|1249 (46.48 %)
+set a breakpoint|9|741|1(11.11 %)|410 (55.33 %)
+get stackTrace|93|71100|1(1.08 %)|8873 (12.48 %)
+evalution|59|11853|1(1.69 %)|292 (2.46 %)
+
