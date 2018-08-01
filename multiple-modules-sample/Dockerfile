@@ -1,0 +1,13 @@
+FROM maven:3.5-jdk-8-slim
+EXPOSE 8080
+
+WORKDIR /usr/src/app
+
+COPY pom.xml .
+COPY library/pom.xml ./library/pom.xml
+COPY application/pom.xml ./application/pom.xml
+RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "verify", "--fail-never"]
+COPY . .
+RUN ["mvn", "package"]
+
+CMD ["java", "-jar", "application/target/gs-multi-module-application-0.0.1-SNAPSHOT.jar"]
