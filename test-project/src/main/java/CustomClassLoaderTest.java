@@ -2,12 +2,7 @@ import java.io.File;
 
 public class CustomClassLoaderTest {
     public static void main(String[] args) {
-        File replacement = new File(new File("").getAbsolutePath(), "replacement");
-        if (!replacement.exists()) {
-            replacement = new File(new File("").getAbsolutePath(), "../replacement");
-        }
-
-
+        File replacement = new File(CustomClassLoaderTest.class.getResource("replacement").getFile());
         final String replacementFolder = replacement.getAbsolutePath();
         new Thread(()-> {
             try {
