@@ -1,0 +1,19 @@
+
+```cmd
+:: execute this command in cmd.exe(admin mode) to install chocolatey
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+```
+
+
+```cmd
+choco install -y vscode azure-cli jdk8 notepadplusplus maven gradle git 
+```
+
+```cmd 
+:: disable dangerously line ending convert in git
+git config --global core.autocrlf false
+```
+
+
+
+npm i -g typescript serve pnpm webpack npm-check-updates npm gulp http-server node-gyp prettier windows-build-tools
